@@ -12,13 +12,22 @@ ADD target/users-mysql.jar users-mysql.jar
 EXPOSE 8086
 ENTRYPOINT ["java", "-jar", "users-mysql.jar"]
 
+
+#---------- start---------------------
 # 4. Using the Dockerfile create Docker image. 
-docker build . -t users-mysql
+docker build . -t bike-rent
 
-# 5. Run the Docker image (users-mysql) created in 
-docker run -p 8086:8086 --name users-mysql --link mysql1:mysql -d users-mysql
+# 5 stop and remove container
+docker container ls 
+docker stop 
+docker rm 
 
-# 6. open in web
+# 6. Run the Docker image (users-mysql) created in 
+docker run -p 8086:8086 --name bike-rent --link mysql1:mysql -d bike-rent
+
+
+
+# 7. open in web
 localhost:8086
 
 
@@ -28,4 +37,9 @@ localhost:8086
 - `docker logs <container_name>`
 - `docker container rm <container_name`
 - `docker image rm <image_name`
+
+
+##reference
+https://www.youtube.com/watch?v=fvEWoy1xOvo
+https://github.com/TechPrimers/docker-mysql-spring-boot-example
 

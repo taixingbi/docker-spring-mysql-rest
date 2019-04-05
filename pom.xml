@@ -58,7 +58,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<finalName>users-mysql</finalName>
+					<finalName>bike-rent</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
