@@ -5,6 +5,8 @@ import com.techprimers.jpa.springdatajpahibernateexample.resource.repository.Use
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,6 +48,11 @@ public class Resource {
         return usersRepository.findAll();
     }
 
+    @PostMapping("/post")
+    public Users addUser( Users post) {
 
+        usersRepository.save(post);
+        return post;
+    }
 
 }
