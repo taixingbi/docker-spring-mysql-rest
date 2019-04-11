@@ -1,6 +1,5 @@
 package com.techprimers.jpa.springdatajpahibernateexample.resource.model;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +11,13 @@ public class Users {
     private String email;
     private String first_name;
     private String last_name;
+    private String name;
+
+    public Users(String first_name, String last_name){
+        super();
+        this.name= first_name + " " + last_name;
+    }
+
 
     public Users() {
     }
@@ -23,6 +29,7 @@ public class Users {
     }
 
     public void setId(Integer id) {
+
         this.id = id;
     }
 
@@ -59,9 +66,5 @@ public class Users {
 
         this.last_name = last_name;
     }
-
-
-
-
 
 }

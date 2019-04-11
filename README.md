@@ -14,6 +14,9 @@ ENTRYPOINT ["java", "-jar", "bike-rent.jar"]
 
 
 #---------- start---------------------
+# start eixt container
+docker start  `docker ps -q -l`
+
 # 4. Using the Dockerfile create Docker image. 
 docker build . -t bike-rent
 
@@ -32,11 +35,11 @@ localhost:8086
 
 
 ## Useful Docker commands
-- `docker images`
-- `docker container ls`
-- `docker logs <container_name>`
-- `docker container rm <container_name`
-- `docker image rm <image_name`
+docker images
+docker container ls
+docker logs <container_name>
+docker container rm <container_name>
+docker image rm <image_name>
 
 
 ##reference

@@ -2,25 +2,35 @@ package com.techprimers.jpa.springdatajpahibernateexample.resource.controller;
 
 import com.techprimers.jpa.springdatajpahibernateexample.resource.model.Users;
 import com.techprimers.jpa.springdatajpahibernateexample.resource.repository.UserRepository;
+import com.techprimers.jpa.springdatajpahibernateexample.resource.service.UserService;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class Resource {
+public class UsersController {
 
     private UserRepository usersRepository;
 
-    public Resource(UserRepository usersRepository) {
+    private final UserService userService = new UserService();
+
+
+    public UsersController(UserRepository usersRepository) {
 
         this.usersRepository = usersRepository;
+    }
+
+    @GetMapping("/users/test") //works well
+    public String test() {
+        return new UserService().test();
+    }
+
+    @GetMapping("/users/")
+    public List<Users> all_() {
+        return userService.AllUsers();
     }
 
     @GetMapping("/users")
@@ -29,10 +39,10 @@ public class Resource {
         return usersRepository.findAll();
     }
 
-    @GetMapping("/users/{id}")
-    public String hello() {
+    @GetMapping("/users/id/{id}")
+    public Users findById(@PathVariable final int id ) {
 
-        return "hello world";
+        return usersRepository.findById(id);
     }
 
     @GetMapping("/create")
@@ -47,6 +57,7 @@ public class Resource {
 
         return usersRepository.findAll();
     }
+
 
     @PostMapping("/post")
     public Users addUser( Users post) {
